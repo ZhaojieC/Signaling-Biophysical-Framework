@@ -67,14 +67,3 @@ changing JAX PRNG key inside the training update. Do not use
 `np.random.randint` inside a `jax.jit`-compiled loss, because it may be
 evaluated only when JAX traces/compiles the function rather than every epoch.
 
-## Run on Oscar
-
-From the directory containing `sgn.py`, `job.sbatch`, `simulated_data.npz`, and
-`X3_data.csv`:
-
-```bash
-sbatch job.sbatch
-```
-
-Existing examples are under `noisy/0`, `noisy/3`, `noisy/5`, `noisy/7`,
-`noisy/10`, `colloc/F*`, and `colloc/R*`.
