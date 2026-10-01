@@ -31,7 +31,7 @@ Requirements: JAX, Optax, NumPy, SciPy, pandas and Matplotlib. The results were 
 - `mc_trial.py`: one Monte Carlo trial. `python mc_trial.py <i>` runs one trial of `example_rbcUQ3.py` (100,000 iterations, seed 42 + 100 × i) and writes `k_out/k_<i>.npz`. Fig. S4 uses i = 0, …, 99.
 - `collect_FigS4.py`: collects `k_out/`, excludes diverged runs, draws Fig. S4, and writes `all_k.npy` and the correlation matrix `FigS4_corr.txt`.
 
-Run the scripts from inside `learnerUQ/`. They read the training data from `data/t2.mat` and `data/x2.mat`, which are not included in this repository.
+Run the scripts from inside `learnerUQ/`. The training data are `data/t2.mat` (318 time points) and `data/x2.mat` (the 15 state variables at those times), sampled densely along model curves fitted to experimental data; the scripts add the 5% multiplicative noise themselves.
 
 Requirements: PyTorch, NumPy, SciPy and Matplotlib. The Monte Carlo runs used Python 3.10 and PyTorch 2.1.2.
 
