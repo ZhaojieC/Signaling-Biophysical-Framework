@@ -88,15 +88,4 @@ The noise matrix is generated once when the script starts. Therefore, all five
 training runs in one job use the same noisy dataset. A new job generates a new
 noise realization unless a NumPy seed is fixed.
 
-## 4. Run on Oscar
 
-Choose one script:
-
-```bash
-python3 -u PIKAN_signaling_F.py  # fixed points
-python3 -u PIKAN_signaling_R.py  # resampled every epoch
-```
-
-For Slurm, change the final line of `job.sbatch` to the selected command. Both
-scripts write to `multi_run_results`, so run them in separate directories or
-rename/move the first result directory before running the other script.
