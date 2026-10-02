@@ -40,3 +40,10 @@ Requirements: PyTorch, NumPy, SciPy and Matplotlib. The Monte Carlo runs used Py
 Physics-informed Kolmogorov–Arnold networks with Chebyshev basis functions (tanh-cPIKANs) for the same inference problem. `PIKAN_signaling_F.py` keeps the collocation points fixed and `PIKAN_signaling_R.py` resamples them at every epoch; both use 100 points by default. Table S8 uses `PIKAN_signaling_F.py` with 1000 points, and Table S11 compares the two scripts; `PIKAN_jax/README.md` gives the settings.
 
 To run, `cd` into `PIKAN_jax/` and run `python PIKAN_signaling_F.py` (or `python PIKAN_signaling_R.py`). The results are written to `multi_run_results/`. Requirements are the same as for `pinn_jax/`.
+
+## Citation
+
+If you use this code, please cite:
+
+1. Zhaojie Chai, Nazanin Ahmadi Daryakenari, and George Em Karniadakis. A Multiscale Signaling–Biophysical Framework Reveals Mechanisms of Macrophage-Mediated RBC Clearance in Sickle Cell and Gaucher Disease. *PNAS Nexus* (2026), in press.
+2. Zhaojie Chai, Guansheng Li, Papa Alioune Ndour, Philippe Connes, Pierre A. Buffet, Melanie Franco, and George Em Karniadakis. In silico biophysics and rheology of blood and red blood cells in Gaucher Disease. *PLOS Computational Biology* 21(9): e1012705 (2025). https://doi.org/10.1371/journal.pcbi.1012705
