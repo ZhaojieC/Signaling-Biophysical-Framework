@@ -35,6 +35,8 @@ Run the scripts from inside `learnerUQ/`. The training data are `data/t2.mat` (3
 
 Requirements: PyTorch, NumPy, SciPy and Matplotlib. The Monte Carlo runs used Python 3.10 and PyTorch 2.1.2.
 
-## PIKAN
+## `PIKAN_jax/`: PIKAN parameter inference (JAX)
 
-The PIKAN implementation will be added separately.
+Physics-informed Kolmogorov–Arnold networks with Chebyshev basis functions (tanh-cPIKANs) for the same inference problem. `PIKAN_signaling_F.py` keeps the collocation points fixed and `PIKAN_signaling_R.py` resamples them at every epoch; both use 100 points by default. Table S8 uses `PIKAN_signaling_F.py` with 1000 points, and Table S11 compares the two scripts; `PIKAN_jax/README.md` gives the settings.
+
+To run, `cd` into `PIKAN_jax/` and run `python PIKAN_signaling_F.py` (or `python PIKAN_signaling_R.py`). The results are written to `multi_run_results/`. Requirements are the same as for `pinn_jax/`.
