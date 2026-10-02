@@ -1,17 +1,74 @@
 # PIKAN noisy-data and collocation studies
 
-Use one copy of `PIKAN_signaling.py` for all studies. Change only the noise level and the
-collocation-point block described below.
+This directory contains two PIKAN training scripts:
 
-## 1. Add or change noise
+- `PIKAN_signaling_F.py`: uses a fixed, uniformly spaced set of collocation
+  points throughout training.
+- `PIKAN_signaling_R.py`: randomly resamples a new set of collocation points
+  at every training epoch.
 
-Set the desired fractional noise near the top of `PIKAN_signaling.py`:
+The model, data, loss weights, optimizer, network architecture, number of
+epochs, noise treatment, and output calculations are the same. The only
+intended experimental difference is how the collocation points are selected.
+
+Both scripts currently use 100 collocation points by default. Therefore, they
+represent the `F-100` and `R-100` configurations, respectively.
+
+## Reported manuscript and SI settings
+
+- The main-text noise-robustness experiments reported in Table S8 used 1000
+  fixed collocation points for both PINNs and tanh-cPIKANs. To reproduce the
+  PIKAN side of that study, run `PIKAN_signaling_F.py` with 1000 points.
+- The PIKAN collocation-strategy comparison is reported in Table S11. Its
+  `F-N` columns use `PIKAN_signaling_F.py` with `N` points, and its `R-N`
+  columns use `PIKAN_signaling_R.py` with `N` points resampled every epoch.
+
+## 1. Fixed collocation points (`PIKAN_signaling_F.py`)
+
+The fixed script uses equally spaced points over `t = [0, 180]`:
+
+```python
+t_colloc = jnp.linspace(0, 180, 100)[:, None]
+```
+
+The same points are used during every epoch. Change `100` to `200`, `1000`, or
+`1500` to obtain the `F-200`, `F-1000`, or `F-1500` configurations.
+
+Fixed points provide deterministic, uniform coverage of time and make repeated
+runs easier to compare. However, the physics residual is always evaluated at
+the same locations.
+
+## 2. Random collocation points (`PIKAN_signaling_R.py`)
+
+Set the desired number near the top of the random script:
+
+```python
+N_colloc = 100
+t_dense_grid = jnp.linspace(0, 180, 1800)[:, None]
+```
+
+During every optimization update, the script splits a changing JAX random key
+and draws `N_colloc` points without replacement from the 1800-point candidate
+grid. A new subset is therefore used at every epoch, not only once per run.
+
+Change `N_colloc` to `200`, `1000`, or `1500` for the `R-200`, `R-1000`, or
+`R-1500` configurations. Because sampling uses `replace=False`, `N_colloc`
+cannot exceed 1800 unless the candidate grid is also enlarged.
+
+Random resampling exposes the physics loss to more time locations over the
+course of training and reduces dependence on one fixed grid. It also adds
+stochastic variation, so fixed and random methods should be compared using the
+same `N_colloc`, noise level, architecture, loss weights, and training epochs.
+
+## 3. Add or change noise
+
+Set the desired fractional noise near the top of either script:
 
 ```python
 noise_level = 0.05  # 0, 0.03, 0.05, 0.07, or 0.10
 ```
 
-The current code uses independent **uniform multiplicative noise**:
+The code uses independent **uniform multiplicative noise**:
 
 ```python
 noise_matrix = np.random.uniform(-1, 1, size=data0.shape)
@@ -19,51 +76,27 @@ noise_matrix[:, 2] = 0.0
 data_noisy = data0 * (1 + noise_level * noise_matrix)
 ```
 
-Thus `noise_level = 0.10` multiplies each measured value by a random factor
+Thus, `noise_level = 0.10` multiplies each measured value by a random factor
 between `0.90` and `1.10`. This is relative uniform noise, not additive or
 Gaussian noise. The noisy data are saved as `simulated_data_noisy.npz`.
 
-`X3` is the third state (Python column index `2`). It comes from the simulation
-and is intentionally **not perturbed by noise**; setting
+`X3` is the third state (Python column index `2`). It comes from the DPD
+simulation and is intentionally **not perturbed by noise**. Setting
 `noise_matrix[:, 2] = 0.0` keeps it unchanged.
 
 The noise matrix is generated once when the script starts. Therefore, all five
-training runs in one job use the same noisy dataset, while a new job generates
-a new realization unless a NumPy seed is fixed.
+training runs in one job use the same noisy dataset. A new job generates a new
+noise realization unless a NumPy seed is fixed.
 
-## 2. Fixed collocation points (`F` study)
+## 4. Run on Oscar
 
-For `N_colloc` equally spaced points that remain fixed during training, use:
+Choose one script:
 
-```python
-N_colloc = 200
-t_colloc = jnp.linspace(0, 180, N_colloc)[:, None]
+```bash
+python3 -u PIKAN_signaling_F.py  # fixed points
+python3 -u PIKAN_signaling_R.py  # resampled every epoch
 ```
 
-Pass `t_colloc` to `train_model`. Change only `N_colloc` for studies such as
-100, 200, 1000, or 1500 points.
-
-## 3. Random/resampled collocation points (`R` study)
-
-To draw `N_colloc` points without replacement from a finer candidate grid, use
-this block inside the `for run_id in range(5):` loop:
-
-```python
-N_colloc = 200
-t_dense_grid = jnp.linspace(0, 180, 1800)[:, None]
-key = jax.random.PRNGKey(run_id * 706)
-indices = jax.random.choice(
-    key, t_dense_grid.shape[0], shape=(N_colloc,), replace=False
-)
-t_colloc = t_dense_grid[indices]
-```
-
-This gives each run a different random subset, which then stays fixed within
-that run. With `replace=False`, `N_colloc` cannot exceed the candidate-grid
-size (1800 here).
-
-If points must be resampled at **every optimization step**, pass and split a
-changing JAX PRNG key inside the training update. Do not use
-`np.random.randint` inside a `jax.jit`-compiled loss, because it may be
-evaluated only when JAX traces/compiles the function rather than every epoch.
-
+For Slurm, change the final line of `job.sbatch` to the selected command. Both
+scripts write to `multi_run_results`, so run them in separate directories or
+rename/move the first result directory before running the other script.
