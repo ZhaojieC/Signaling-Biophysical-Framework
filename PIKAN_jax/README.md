@@ -1,6 +1,6 @@
 # PIKAN noisy-data and collocation studies
 
-Use one copy of `sgn.py` for all studies. Change only the noise level and the
+Use one copy of `PIKAN_Signaling.py` for all studies. Change only the noise level and the
 collocation-point block described below.
 
 ## 1. Add or change noise
