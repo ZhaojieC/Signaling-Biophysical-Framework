@@ -5,7 +5,7 @@ collocation-point block described below.
 
 ## 1. Add or change noise
 
-Set the desired fractional noise near the top of `sgn.py`:
+Set the desired fractional noise near the top of `PIKAN_signaling.py`:
 
 ```python
 noise_level = 0.05  # 0, 0.03, 0.05, 0.07, or 0.10
