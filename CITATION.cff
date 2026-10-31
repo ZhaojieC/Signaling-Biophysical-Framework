@@ -13,3 +13,19 @@ authors:
     given-names: George Em
     affiliation: Brown University
 repository-code: "https://github.com/ZhaojieC/Signaling-Biophysical-Framework"
+preferred-citation:
+  type: article
+  title: "A multiscale signaling–biophysical framework reveals mechanisms of macrophage-mediated RBC clearance in sickle cell and Gaucher disease"
+  authors:
+    - family-names: Chai
+      given-names: Zhaojie
+    - family-names: Ahmadi Daryakenari
+      given-names: Nazanin
+    - family-names: Karniadakis
+      given-names: George Em
+  journal: "PNAS Nexus"
+  volume: 5
+  issue: 10
+  start: pgag348
+  year: 2026
+  doi: 10.1093/pnasnexus/pgag348

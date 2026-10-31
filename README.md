@@ -4,7 +4,7 @@ Code for
 
 > Zhaojie Chai, Nazanin Ahmadi Daryakenari, and George E. Karniadakis.
 > A Multiscale Signaling–Biophysical Framework Reveals Mechanisms of Macrophage-Mediated RBC Clearance in Sickle Cell and Gaucher Disease.
-> *PNAS Nexus* (2026). Preprint: https://doi.org/10.64898/2026.04.20.719505
+> *PNAS Nexus* 5(10): pgag348 (2026). https://doi.org/10.1093/pnasnexus/pgag348
 
 ## `pinn_jax/`: PINN parameter inference (JAX)
 
@@ -45,5 +45,13 @@ To run, `cd` into `PIKAN_jax/` and run `python PIKAN_signaling_F.py` (or `python
 
 If you use this code, please cite:
 
-1. Zhaojie Chai, Nazanin Ahmadi Daryakenari, and George Em Karniadakis. A Multiscale Signaling–Biophysical Framework Reveals Mechanisms of Macrophage-Mediated RBC Clearance in Sickle Cell and Gaucher Disease. *PNAS Nexus* (2026), in press.
+1. Zhaojie Chai, Nazanin Ahmadi Daryakenari, and George Em Karniadakis. A Multiscale Signaling–Biophysical Framework Reveals Mechanisms of Macrophage-Mediated RBC Clearance in Sickle Cell and Gaucher Disease. *PNAS Nexus* 5(10): pgag348 (2026). https://doi.org/10.1093/pnasnexus/pgag348
 2. Zhaojie Chai, Guansheng Li, Papa Alioune Ndour, Philippe Connes, Pierre A. Buffet, Melanie Franco, and George Em Karniadakis. In silico biophysics and rheology of blood and red blood cells in Gaucher Disease. *PLOS Computational Biology* 21(9): e1012705 (2025). https://doi.org/10.1371/journal.pcbi.1012705
+
+## Related publications
+
+- Zhaojie Chai, Marine de Person, Pierre A. Buffet, Melanie Franco, and George Em Karniadakis. Quantifying the Biophysical Properties of Red Blood Cells in Gaucher Disease. *Biophysical Journal* (2026). https://doi.org/10.1016/j.bpj.2026.10.021
+- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. Quantifying the biophysical properties of stomatocytes in health and disease. *Biophysical Journal* (2026). https://doi.org/10.1016/j.bpj.2026.10.007
+- Juan Diego Toscano, Zhaojie Chai, and George Em Karniadakis. GRAFT-ATHENA: Self-Improving Agentic Teams for Autonomous Discovery and Evolutionary Numerical Algorithms. arXiv:2605.11117 (2026). https://arxiv.org/abs/2605.11117
+- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. Quantifying reticulocyte biomechanics in health and disease. arXiv:2607.21810 (2026). https://arxiv.org/abs/2607.21810
+- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. The typical red cell makes too little vacuole material for coalescence to build the large vacuoles of pocked cells. arXiv:2610.22646 (2026). https://arxiv.org/abs/2610.22646
