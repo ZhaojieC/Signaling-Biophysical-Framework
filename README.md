@@ -51,7 +51,4 @@ If you use this code, please cite:
 ## Related publications
 
 - Zhaojie Chai, Marine de Person, Pierre A. Buffet, Melanie Franco, and George Em Karniadakis. Quantifying the Biophysical Properties of Red Blood Cells in Gaucher Disease. *Biophysical Journal* (2026). https://doi.org/10.1016/j.bpj.2026.10.021
-- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. Quantifying the biophysical properties of stomatocytes in health and disease. *Biophysical Journal* (2026). https://doi.org/10.1016/j.bpj.2026.10.007
 - Juan Diego Toscano, Zhaojie Chai, and George Em Karniadakis. GRAFT-ATHENA: Self-Improving Agentic Teams for Autonomous Discovery and Evolutionary Numerical Algorithms. arXiv:2605.11117 (2026). https://arxiv.org/abs/2605.11117
-- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. Quantifying reticulocyte biomechanics in health and disease. arXiv:2607.21810 (2026). https://arxiv.org/abs/2607.21810
-- Zhaojie Chai, Jianlu Zheng, He Li, Ming Dao, and George Em Karniadakis. The typical red cell makes too little vacuole material for coalescence to build the large vacuoles of pocked cells. arXiv:2610.22646 (2026). https://arxiv.org/abs/2610.22646
