@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# Code for Z. Chai, N. Ahmadi Daryakenari and G. E. Karniadakis, A multiscale
+# signaling-biophysical framework reveals mechanisms of macrophage-mediated RBC
+# clearance in sickle cell and Gaucher disease, PNAS Nexus 5(10), pgag348 (2026),
+# https://doi.org/10.1093/pnasnexus/pgag348
+# https://github.com/ZhaojieC/Signaling-Biophysical-Framework
+# If you use this code, please cite the article above (see CITATION.cff).
 """One Monte-Carlo trial for Fig S4. Run as: python mc_trial.py <trial_index>
 
 Saves k_out/k_<idx>.npz holding
