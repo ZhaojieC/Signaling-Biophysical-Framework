@@ -1,3 +1,9 @@
+# Code for Z. Chai, N. Ahmadi Daryakenari and G. E. Karniadakis, A multiscale
+# signaling-biophysical framework reveals mechanisms of macrophage-mediated RBC
+# clearance in sickle cell and Gaucher disease, PNAS Nexus 5(10), pgag348 (2026),
+# https://doi.org/10.1093/pnasnexus/pgag348
+# https://github.com/ZhaojieC/Signaling-Biophysical-Framework
+# If you use this code, please cite the article above (see CITATION.cff).
 # --- Imports ---
 import time
 import os
